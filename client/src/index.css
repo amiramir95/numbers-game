@@ -21,3 +21,92 @@ code {
 .error-result {
   color: #cf0a0a;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.gameContainer {
+  display: flex;
+  flex-flow: wrap;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  right: 100px;
+}
+
+.targetNumbersContainer {
+  display: flex;
+  margin-right: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button {
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #be3144;
+  border: 2px solid #d3d6db;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #d3d6db;
+  min-height: 60px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.button-cursor {
+  cursor: pointer;
+}
+
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  min-height: 100px;
+  min-width: 200px;
+  border: 2px solid #d3d6db;
+  border-radius: 8px;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.resultsContainerPlaceholder {
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+}
+
+.resultPlaceholder {
+  height: 20px;
+  background-color: transparent;
+  margin-bottom: 5px;
+}
+
+.scoreContainer {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #d3d6db;
+}
+
+.gameName {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
