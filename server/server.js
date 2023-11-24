@@ -12,7 +12,10 @@ const PORT = process.env.PORT || 5001
 app.use(cors())
 
 // Connect to MongoDB
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING)
+mongoose
+  .connect(process.env.DATABASE_CONNECTION_STRING)
+  .then((result) => console.log('connection result = ', result))
+  .catch((error) => console.log('database Error = ', error))
 
 // Create a Mongoose model for high scores
 const HighScore = mongoose.model('HighScore', {
