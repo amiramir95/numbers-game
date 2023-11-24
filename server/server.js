@@ -1,12 +1,15 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const dotenv = require('dotenv')
 
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 5001
+
+app.use(cors())
 
 // Connect to MongoDB
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING)
@@ -21,8 +24,8 @@ app.use(bodyParser.json())
 app.get('/scores/highscore', async (req, res) => {
   try {
     const highestScore = await HighScore.findOne().sort({ score: -1 })
-    if (!highestScore) return res.json({highscore: 0})
-    res.json({highscore: highestScore.score})
+    if (!highestScore) return res.json({ highscore: 0 })
+    res.json({ highscore: highestScore.score })
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
   }

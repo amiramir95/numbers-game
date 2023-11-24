@@ -4,6 +4,7 @@ import Button from './Button'
 import Square from './Square'
 import generateRandomNumbers from './utils'
 import ResultDisplay from './ResultDisplay'
+import { fetchHighScore, saveScore } from './api'
 
 const App = () => {
   const [buttonNumbers, setButtonNumbers] = useState(
@@ -15,6 +16,14 @@ const App = () => {
   const [userNumbers, setUserNumbers] = useState([])
   const [roundsResults, setRoundsResults] = useState([])
   const [score, setScore] = useState(0)
+  const [highScore, setHighScore] = useState(0)
+
+  useEffect(() => {
+    // Fetch the high score from the backend when the component mounts
+    fetchHighScore()
+      .then((result) => setHighScore(result))
+      .catch((error) => console.error('Error setting high score:', error))
+  }, [])
 
   const handleButtonClick = (number) => {
     // Check if the clicked number is the next target number.
@@ -48,10 +57,18 @@ const App = () => {
 
   useEffect(() => {
     if (roundsResults.length === 4) {
+      // Save the score after each game.
+      saveScore(score)
+        .then(() => fetchHighScore())
+        .then((result) => setHighScore(result))
+        .catch((error) =>
+          console.error('Error saving and fetching score:', error)
+        )
+
       setTimeout(() => {
         alert(`Game Over! Your final score is ${score}.`)
         restartGame()
-      }, 1000)
+      }, 100)
     }
   }, [roundsResults])
 
@@ -94,6 +111,9 @@ const App = () => {
 
       {/* Display score */}
       <div style={styles.scoreContainer}>Score: {score}</div>
+
+      {/* Display high score */}
+      <div style={styles.highScoreContainer}>High Score: {highScore}</div>
 
       {/* Restart button */}
       <button onClick={restartGame} style={styles.restartButton}>
@@ -159,6 +179,11 @@ const styles = {
     fontWeight: 'bold',
     cursor: 'pointer',
   },
+  highScoreContainer: {
+    fontSize: '20px',
+    fontWeight: 'bold',
+    marginBottom: '10px',
+  },
 }
 
-export default App;
+export default App
