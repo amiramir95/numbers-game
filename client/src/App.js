@@ -74,10 +74,7 @@ const App = () => {
 
   return (
     <div style={styles.container}>
-
-      <div style={styles.gameName}>
-        NUMBERS GAME
-      </div>
+      <div style={styles.gameName}>NUMBERS GAME</div>
 
       {/* Display squares with target numbers and results */}
       <div style={styles.gameContainer}>
@@ -115,12 +112,12 @@ const App = () => {
       </div>
 
       {/* Display score */}
-      <br/>
+      <br />
       <div style={styles.scoreContainer}>Score: {score}</div>
 
       {/* Display high score */}
       <div style={styles.scoreContainer}>High Score: {highScore}</div>
-      <br/>
+      <br />
 
       {/* Restart button */}
       <button onClick={restartGame} style={styles.restartButton}>
@@ -141,10 +138,10 @@ const styles = {
   },
   gameContainer: {
     display: 'flex',
-    flexFlow:' wrap',
+    flexFlow: ' wrap',
     alignItems: 'flex-start',
     marginBottom: '20px',
-    right: '100px'
+    right: '100px',
   },
   targetNumbersContainer: {
     display: 'flex',
@@ -177,7 +174,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     marginLeft: '20px',
-    minHeight:'100px',
+    minHeight: '100px',
     minWidth: '200px',
     border: '2px solid #d3d6db',
     borderRadius: '8px',
@@ -220,7 +217,7 @@ const styles = {
     fontSize: '40px',
     fontWeight: 'bold',
     marginBottom: '50px',
-  }
+  },
 }
 
-export default App;
+export default App

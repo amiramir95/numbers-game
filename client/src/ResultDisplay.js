@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 const ResultDisplay = ({ result }) => {
-  return <div>{result ? 'True' : 'False'}</div>;
-};
+  const resultClass = result ? 'success-result' : 'error-result'
+  return <div className={`${resultClass}`}>{result ? 'True' : 'False'}</div>
+}
 
-export default ResultDisplay;
+export default ResultDisplay
