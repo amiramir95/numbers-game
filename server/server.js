@@ -25,7 +25,9 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/', async (req, res) => {
-  return 'Hello'
+  return res.json({
+    msg : 'hello'
+  })
 })
 
 app.get('/health', async (req, res) => {
