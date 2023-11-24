@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5001';
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 // Function to fetch the high score from the backend
 export const fetchHighScore = async () => {
