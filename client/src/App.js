@@ -105,14 +105,11 @@ const App = () => {
       <div className="buttonsContainer">
         {/* Assuming Button is a component with its own styling */}
         {buttonNumbers.map((num) => (
-          <button
+          <Button
               key={num}
               number={num}
               onClick={handleButtonClick}
-              className="button button-cursor"
-            >
-            {num}
-          </button>
+            />
         ))}
       </div>
 
