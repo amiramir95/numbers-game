@@ -11,18 +11,38 @@ const PORT = process.env.PORT || 5001
 
 app.use(cors())
 
-// Connect to MongoDB
+// // Connect to MongoDB
+// mongoose
+//   .connect(process.env.DATABASE_CONNECTION_STRING)
+//   .then((result) => console.log('connection OK'))
+//   .catch((error) => console.log('database Error = ', error))
+
+// // Create a Mongoose model for high scores
+// const HighScore = mongoose.model('HighScore', {
+//   score: Number,
+// })
+
+app.use(bodyParser.json())
+
+app.get('/', async (req, res) => {
+  return 'Hello'
+})
+
+app.get('/health', async (req, res) => {
+  return res.json({
+    success: true,
+  })
+})
+
 mongoose
   .connect(process.env.DATABASE_CONNECTION_STRING)
-  .then((result) => console.log('connection result = ', result))
+  .then((result) => console.log('connection OK'))
   .catch((error) => console.log('database Error = ', error))
 
 // Create a Mongoose model for high scores
 const HighScore = mongoose.model('HighScore', {
   score: Number,
 })
-
-app.use(bodyParser.json())
 
 app.get('/scores/highscore', async (req, res) => {
   try {
