@@ -13,26 +13,26 @@ mongoose.connect(process.env.DATABASE_CONNECTION_STRING)
 
 // Create a Mongoose model for high scores
 const HighScore = mongoose.model('HighScore', {
-  name: String,
   score: Number,
 })
 
 app.use(bodyParser.json())
 
-app.get('/highscore', async (req, res) => {
+app.get('/scores/highscore', async (req, res) => {
   try {
     const highestScore = await HighScore.findOne().sort({ score: -1 })
-    res.json(highestScore)
+    if (!highestScore) return res.json({highscore: 0})
+    res.json({highscore: highestScore.score})
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
   }
 })
 
-app.post('/highscore', async (req, res) => {
-  const { name, score } = req.body
+app.post('/scores', async (req, res) => {
+  const { score } = req.body
 
   try {
-    const newHighScore = new HighScore({ name, score })
+    const newHighScore = new HighScore({ score })
     await newHighScore.save()
     res.json({ success: true })
   } catch (error) {
