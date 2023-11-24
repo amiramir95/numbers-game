@@ -74,6 +74,11 @@ const App = () => {
 
   return (
     <div style={styles.container}>
+
+      <div style={styles.gameName}>
+        NUMBERS GAME
+      </div>
+
       {/* Display squares with target numbers and results */}
       <div style={styles.gameContainer}>
         <div style={styles.targetNumbersContainer}>
@@ -110,10 +115,12 @@ const App = () => {
       </div>
 
       {/* Display score */}
+      <br/>
       <div style={styles.scoreContainer}>Score: {score}</div>
 
       {/* Display high score */}
-      <div style={styles.highScoreContainer}>High Score: {highScore}</div>
+      <div style={styles.scoreContainer}>High Score: {highScore}</div>
+      <br/>
 
       {/* Restart button */}
       <button onClick={restartGame} style={styles.restartButton}>
@@ -130,16 +137,21 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
+    position: 'relative',
   },
   gameContainer: {
     display: 'flex',
-    alignItems: 'flex-start', // Align items to the start to prevent shifting
+    flexFlow:' wrap',
+    alignItems: 'flex-start',
     marginBottom: '20px',
+    right: '100px'
   },
   targetNumbersContainer: {
     display: 'flex',
     marginRight: '20px',
-    width: '120px', // Fixed width to prevent shifting
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: '10px',
   },
   buttonsContainer: {
     display: 'flex',
@@ -148,42 +160,67 @@ const styles = {
     gap: '10px',
   },
   button: {
-    // Add your button styling here
-    padding: '10px 15px',
     fontSize: '16px',
+    fontWeight: 'bold',
+    backgroundColor: '#be3144',
+    border: '2px solid #d3d6db',
+    borderRadius: '8px',
+    boxSizing: 'border-box',
+    color: '#d3d6db',
     cursor: 'pointer',
+    minHeight: '60px',
+    outline: 'none',
+    padding: '16px 24px',
+    textAlign: 'center',
   },
   resultsContainer: {
     display: 'flex',
     flexDirection: 'column',
-    marginLeft: '20px', // Adjust the left margin to move it further to the right
+    marginLeft: '20px',
+    minHeight:'100px',
+    minWidth: '200px',
+    border: '2px solid #d3d6db',
+    borderRadius: '8px',
+    padding: '10px',
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
   },
   resultsContainerPlaceholder: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '80px', // Set a fixed height for the placeholder
+    minHeight: '80px',
   },
   resultPlaceholder: {
-    height: '20px', // Set a fixed height for each placeholder item
-    backgroundColor: 'transparent', // Match the background color
-    marginBottom: '5px', // Add some spacing between placeholders
+    height: '20px',
+    backgroundColor: 'transparent',
+    marginBottom: '5px',
   },
   scoreContainer: {
     fontSize: '20px',
     fontWeight: 'bold',
     marginBottom: '10px',
+    textTransform: 'uppercase',
+    color: '#d3d6db',
   },
   restartButton: {
-    padding: '10px 15px',
     fontSize: '16px',
     fontWeight: 'bold',
+    backgroundColor: '#be3144',
+    border: '2px solid #d3d6db',
+    borderRadius: '8px',
+    boxSizing: 'border-box',
+    color: '#d3d6db',
     cursor: 'pointer',
+    minHeight: '60px',
+    outline: 'none',
+    padding: '16px 24px',
+    textAlign: 'center',
   },
-  highScoreContainer: {
-    fontSize: '20px',
+  gameName: {
+    fontSize: '40px',
     fontWeight: 'bold',
-    marginBottom: '10px',
-  },
+    marginBottom: '50px',
+  }
 }
 
-export default App
+export default App;

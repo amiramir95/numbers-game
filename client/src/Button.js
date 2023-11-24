@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-const Button = ({ number, onClick }) => {
+const Button = ({ number, onClick, style }) => {
   return (
-    <button onClick={() => onClick(number)}>
+    <button onClick={() => onClick(number)} style={style}>
       {number}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

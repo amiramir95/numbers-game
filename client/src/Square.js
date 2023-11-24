@@ -1,6 +1,26 @@
-import React from 'react';
+import React from 'react'
 
 const Square = ({ number }) => {
-  return <div style={{ display: 'inline-block', margin: '5px', padding: '10px', border: '1px solid black' }}>{number}</div>;
-};
-export default Square;
+  return (
+    <div
+      style={{
+        fontSize: '16px',
+        fontWeight: 'bold',
+        backgroundColor: '#be3144',
+        border: '2px solid #d3d6db',
+        borderRadius: '8px',
+        boxSizing: 'border-box',
+        color: '#d3d6db',
+        cursor: 'pointer',
+        minHeight: '60px',
+        outline: 'none',
+        padding: '16px 24px',
+        textAlign: 'center',
+      }}
+    >
+      {number}
+    </div>
+  )
+}
+
+export default Square
