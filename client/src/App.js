@@ -18,6 +18,8 @@ const App = () => {
   const [roundsResults, setRoundsResults] = useState([])
   const [score, setScore] = useState(0)
   const [highScore, setHighScore] = useState(0)
+  const [correctNumber, setCorrectNumber] = useState(false)
+
 
   useEffect(() => {
     // Fetch the high score from the backend when the component mounts
@@ -30,6 +32,7 @@ const App = () => {
     // Check if the clicked number is the next target number.
     if (number === targetNumbers[userNumbers.length]) {
       setUserNumbers((prevNumbers) => [...prevNumbers, number])
+      setCorrectNumber(true)
 
       // If the user has clicked all target numbers, start new round.
       if (userNumbers.length + 1 === targetNumbers.length) {
@@ -103,12 +106,12 @@ const App = () => {
 
       {/* Display buttons with numbers (random order) */}
       <div className="buttonsContainer">
-        {/* Assuming Button is a component with its own styling */}
         {buttonNumbers.map((num) => (
           <Button
               key={num}
               number={num}
               onClick={handleButtonClick}
+              isCorrect={num === userNumbers[userNumbers.length - 1] && correctNumber}
             />
         ))}
       </div>
